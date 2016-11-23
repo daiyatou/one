@@ -3,68 +3,49 @@ import React, { Component } from 'react';
 import {Text, StyleSheet, Navigator, Image, View, ListView, Alert, TouchableHighlight, InteractionManager, TouchableOpacity, Platform, AsyncStorage } from 'react-native';
 import ViewPager from 'react-native-viewpager';
 import HttpView from '../pages/httpView';
-import styles from './style'
+import styles from './style';
 
-var THUMB_URLS = [
-  require('../static/images/classify/classifyImg1.png'),
-  require('../static/images/classify/classifyImg2.png'),
-  require('../static/images/classify/classifyImg3.png'),
-  require('../static/images/classify/classifyImg4.png'),
-  require('../static/images/classify/classifyImg5.png'),
-  require('../static/images/classify/classifyImg6.png'),
-  require('../static/images/classify/classifyImg7.png'),
-  require('../static/images/classify/classifyImg8.png'),
-  require('../static/images/classify/classifyImg9.png'),
-  require('../static/images/classify/classifyImg10.png'),
-  require('../static/images/classify/classifyImg11.png'),
-  require('../static/images/classify/classifyImg12.png'),
-  require('../static/images/classify/classifyImg13.png'),
-  require('../static/images/classify/classifyImg14.png'),
-];
-
+var postUrl = 'http://10.10.20.40:8080/no/client?disclass=product&action=gfreshHome&PortID=1';
 class Classify extends Component {
   constructor(props) {
-      super(props);
-      // 用于构建DataSource对象
-      var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      // 实际的DataSources存放在state中
-      this.state = {
-          selectedTab: 'blueTab',
-          notifCount: 0,
-          presses: 0,
-          dataSource2:ds.cloneWithRows(this._genRows({})),
-          name:null,
-      };
-  }
-  _renderPage(data, pageID) {
-     return (
-         <Image source={data} style={styles.page}/>
-     );
+     super(props);
+     // 用于构建DataSource对象
+     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+     // 实际的DataSources存放在state中
+     this.state = {
+         selectedTab: 'blueTab',
+         notifCount: 0,
+         presses: 0,
+         loaded: false,
+         dataSource:ds,
+     };
  }
-
+  componentDidMount() {
+    this.getDate();
+  }
+  getDate() {              // 获取数据的方法，并在取得数据之后更新数据源
+    fetch(postUrl)
+      .then((response) => response.json())
+      .then((success) => {
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(success.data.homeAreaList)  //为了设置dataSourece的实际内容， 在constructor 返回 clonewithRows 方法
+        })
+      })
+  }
 
  render() {
     return (
         <View>
-            <ListView
-               initialListSize={13*2}
-               contentContainerStyle={styles.list}
-               dataSource={this.state.dataSource2}
-               renderRow={this._renderRow}
+            <ListView                             // 通过渲染返回数据
+            contentContainerStyle={styles.list}
+            dataSource={this.state.dataSource}
+            renderRow={this._renderRow.bind(this)}
+            removeClippedSubviews={false}
              />
         </View>
     );
   }
   showDetails(){
-   //let _this=this;
-   //  const {navigator} = this.props;
-   //   this.props.navigator.push({
-   //    name: 'HttpView',
-   //    component: HttpView,
-   //    passProps: {
-   //      id: this.state.id,
-   //    }
-   //  })
    this.props.navigator.push({
        name: "HttpView",
        component: HttpView,
@@ -72,25 +53,12 @@ class Classify extends Component {
   }
   _renderRow(rowData,sectionID,rowID)
     {
-      var imgSource = THUMB_URLS[rowID];
       return (
         <View style={styles.row}>
-          <Image style={styles.thumb} source={imgSource} />
-          <Text style={styles.text}>
-            {rowData}
-          </Text>
+          <Image style={styles.thumb} source={{uri:rowData.FilePath+rowData.FileName}} />
+          <Text style={styles.text}>{rowData.HomeAreaName}</Text>
         </View>
       );
-    }
-
-  _genRows(pressData: {[key: number]:boolean}): Array<string>
-    {
-      var dataBlob = [];
-      for (var ii = 0; ii < THUMB_URLS.length;ii++) {
-        dataBlob.push('单元格 ' + ii);
-      }
-      console.log('第'+ii+'个');
-      return dataBlob;
     }
 
 }

@@ -42,6 +42,15 @@ export default class Header extends React.Component {
             )
         }
 
+        // 自定义rightTxt
+        if (this.props.titleRight != undefined) {
+            NavigationBar.push(
+              <TouchableOpacity key={'titleRight'}>
+                <Text style={styles.title_right}>{this.props.titleRight}</Text>
+              </TouchableOpacity>
+            )
+        }
+
         if (this.props.rightButton != undefined) {
             NavigationBar.push(
               <TouchableOpacity
@@ -109,5 +118,14 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       marginLeft: 10,
       marginTop: 10,
+    },
+    title_right:{
+      alignItems:'flex-end',
+      justifyContent: 'flex-end',
+      textAlign: 'right',
+      color:'#ffffff',
+      marginRight: 10,
+      fontSize: 12,
+      marginLeft: Common.window.width/2-95,
     },
 })

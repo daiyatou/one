@@ -8,7 +8,7 @@ import HeaderView from '../common/HeaderView';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RecipeSection from './Data/RecipeSection.json';
 import RecipeDetail from '../pages/RecipeDetail1';
-import HttpView from '../pages/httpView';
+import HttpView from './httpView';
 
 class Class extends Component {
     constructor(props) {
