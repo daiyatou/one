@@ -19,7 +19,33 @@ class Class extends Component {
                 rowHasChanged: (row1, row2) => row1 !== row2,
             }),
         };
+
+        needDetail: false, // 显示详细信息
+ needMars: false, // 是否需要火星坐标，默认将火星坐标转为地球坐标
+ accuracy: 'HighAccuracy', // BatterySaving or DeviceSensors
+ needAddress: true,
+ onceLocation: false,
+ wifiActiveScan: true,
+ mockEnable: false,
+ interval: 2000,
+ gpsFirst: false,
+ httpTimeOut: 30000,
     }
+
+    componentDidMount() {
+      this.unlisten = AMapLocation.addEventListener((data) => console.log('data', data));
+      AMapLocation.startLocation({
+        accuracy: 'HighAccuracy',
+        killProcess: true,
+        needDetail: true,
+      });
+    }
+
+    componentWillUnmount() {
+      AMapLocation.stopLocation();
+      this.unlisten();
+    }
+
     _pressButton() {
       // const { navigator } = this.props;
       this.props.navigator.push({

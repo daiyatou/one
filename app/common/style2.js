@@ -15,6 +15,15 @@ module.exports = {
   color_white:{
     color:'#ffffff',
   },
+  color_red:{
+    color:'#ff4d77',
+  },
+  color_blue:{
+    color:'#0463de',
+  },
+  color_green:{
+    color:'#4cd964',
+  },
   font_14: {
     fontSize: 14,
   },
@@ -48,12 +57,12 @@ module.exports = {
     marginBottom: 8,
     marginLeft: 8,
     marginRight: 8,
-    padding: 8,
+    padding: 6,
     backgroundColor:'#0463de',
     borderRadius:3,
   },
   bottom_botton:{
-    fontSize: 14,
+    fontSize: 12,
     textAlign: 'center',
     color: '#ffffff',
   },
@@ -207,13 +216,10 @@ module.exports = {
 //个人资料
   personinfo_head:{
     flexDirection:'row',
-    flex:1,
     backgroundColor:'#ffffff',
     marginTop:8,
-    height:60,
     justifyContent:'center',
     alignItems:'center',
-    position:'relative',
   },
   personinfo_line:{
     backgroundColor:'#f5f5f5',
@@ -223,9 +229,7 @@ module.exports = {
     borderRadius:25,
     width:50,
     height:50,
-    position:'absolute',
-    right:10,
-    top:5,
+    margin:8,
   },
   personinfo_txt:{
     flex:1,
@@ -253,6 +257,8 @@ module.exports = {
   },
   scan_list_center:{
     marginLeft:8,
+    justifyContent:'center',
+    flex:1,
   },
   scan_list_name:{
     color:'#333333',
@@ -282,6 +288,112 @@ module.exports = {
     width:16,
     height:16,
   },
+//到货通知
+  goods_on:{
+    color:'#4cd964',
+  },
+  goods_off:{
+    color:'#a5aab4',
+  },
+//交易列表一行组件TradeItem
+  trade_item:{
+    flexDirection:'column',
+    backgroundColor:'#ffffff',
+    padding:10,
+  },
+  trade_item_row:{
+    flexDirection:'row',
+    marginTop:2,
+    marginBottom:2,
+  },
+  trade_name:{
+    color:'#2d2d2d',
+    fontSize:12,
+    justifyContent:'center',
+    alignItems:'flex-end',
+    justifyContent:'center',
+    flex:1,
+  },
+  trade_datatime:{
+    color:'#979797',
+    fontSize:12,
+    justifyContent:'center',
+  },
+  trade_balance:{
+    color:'#979797',
+    fontSize:12,
+    justifyContent:'center',
+    alignItems:'flex-end',
+    justifyContent:'center',
+    flex:1,
+  },
+  trade_num:{
+    color:'#979797',
+    fontSize:12,
+    fontWeight:'bold',
+    justifyContent:'center',
+  },
+//我的余额
+  trade_tab:{
+    backgroundColor:'#ffffff',
+    flexDirection:'row',
+  },
+  trade_tab_unit:{
+    width:Common.window.width/2,
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection:'column',
+    paddingTop:8,
+    paddingBottom:8,
+  },
+  line_on:{
+    width:Common.window.width/2,
+    backgroundColor:'#0463de',
+    height:2,
+    marginTop:8,
+  },
+  line_off:{
+    width:Common.window.width/2,
+    backgroundColor:'#a5aab4',
+    height:1,
+    marginTop:8,
+  },
+  trade_tab_gray:{
+    color:'#a5aab4',
+  },
+  balance_head:{
+    backgroundColor:'#ffffff',
+    flexDirection:'row',
+    padding:8,
+  },
+  balance_photo:{
+    height:50,
+    width:50,
+    borderRadius:25,
+  },
+  balance_head_title:{
+    color:'#333333',
+    fontSize:12,
+    marginTop:5,
+  },
+  balance_head_num:{
+    fontSize:14,
+    marginTop:5,
+  },
+  balance_head_right:{
+    flex:1,
+    alignItems:'flex-end',
+    justifyContent:'center',
+    flexDirection:'row',
+  },
+  balance_btn:{
+    width:50,
+  },
+
+
+
+
+
 
 
 

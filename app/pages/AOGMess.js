@@ -6,8 +6,8 @@ import HeaderView from '../common/HeaderView';
 import HttpView from './httpView';
 import styles from '../common/style2';
 
-var ScanUrl = 'http://10.10.20.40:8087/mall-app-buyers-manage/home/getHomeInfo';
-class ScanHistory extends Component {
+var AOGMessUrl = 'http://10.10.20.40:8087/mall-app-buyers-manage/home/getHomeInfo';
+class AOGMess extends Component {
   constructor(props) {
      super(props);
      // 用于构建DataSource对象
@@ -25,7 +25,7 @@ class ScanHistory extends Component {
     this.getDate();
   }
   getDate() {              // 获取数据的方法，并在取得数据之后更新数据源
-    fetch(ScanUrl)
+    fetch(AOGMesstUrl)
       .then((response) => response.json())
       .then((success) => {
         this.setState({
@@ -39,7 +39,7 @@ class ScanHistory extends Component {
       <View style={styles.body_bg}>
          <View style={styles.body_head}>
           <HeaderView
-              titleView= '浏览记录'
+              titleView= '到货通知'
               leftIcon={'angle-left'}
               leftIconAction={() => this.props.navigator.pop() }
               titleRight='清空'
@@ -73,12 +73,13 @@ class ScanHistory extends Component {
               <Image style={styles.scan_list_img} source={require('../static/images/product/productImg.png')}/>
             </View>
             <View style={styles.scan_list_center}>
-              <Text style={styles.scan_list_name}>{rowData.port} 厄瓜多尔 养殖南美白虾</Text>
+              <Text style={styles.scan_list_name}>{rowData.port} 养殖南美白虾</Text>
               <Text style={styles.scan_list_price}>￥1896.00 × {rowData.portID}</Text>
-              <Text style={styles.scan_list_size}>{rowData.cityName} 1~1.25lbs 33磅/泡沫箱 7-20</Text>
+              <Text style={styles.scan_list_size}>{rowData.cityName} 1~1.25lbs</Text>
+              <Text style={styles.scan_list_size}>33磅/泡沫箱 7-20</Text>
             </View>
             <View style={styles.scan_list_right}>
-              <Text style={styles.scan_list_date}>08-18</Text>
+              <Text style={[styles.scan_list_date, styles.goods_on]}>08-18</Text>
             </View>
           </View>
         </ScrollView>
@@ -87,4 +88,4 @@ class ScanHistory extends Component {
 
 }
 
-module.exports = ScanHistory;
+module.exports = AOGMess;

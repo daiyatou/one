@@ -36,13 +36,13 @@ export default class PersonalSet extends Component {
               <CenterItem title='修改支付密码' onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
               <View style={[styles.top_line,styles.center_line]}></View>
               <CenterItem title='更换手机号' right10="13918485632" onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
-              <View style={styles.top_line}></View>
+              <View style={[styles.top_line,styles.center_line]}></View>
               <CenterItem title='关于我们' onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
-              <View style={styles.top_line}></View>
+              <View style={[styles.top_line,styles.center_line]}></View>
               <CenterItem title='检测新版本' onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
-              <View style={styles.top_line}></View>
+              <View style={[styles.top_line,styles.center_line]}></View>
               <CenterItem title='配货说明' onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
-              <View style={styles.top_line}></View>
+              <View style={[styles.top_line,styles.center_line]}></View>
               <CenterItem title='验货与赔偿说明' onPress={this.testButton.bind(this)} moreView={require('../static/images/icon-rightGray.png')} />
               <View style={styles.top_line}></View>
            </ScrollView>

@@ -6,7 +6,7 @@ import HeaderView from '../common/HeaderView';
 import HttpView from './httpView';
 import styles from '../common/style2';
 
-var storeListUrl = 'http://10.10.20.40:8087/mall-app-buyers-manage/home/getHomeInfo';
+var storeUrl = 'http://10.10.20.40:8087/mall-app-buyers-manage/home/getHomeInfo';
 class StoreGoods extends Component {
   constructor(props) {
      super(props);
@@ -25,7 +25,7 @@ class StoreGoods extends Component {
     this.getDate();
   }
   getDate() {              // 获取数据的方法，并在取得数据之后更新数据源
-    fetch(storeListUrl)
+    fetch(storeUrl)
       .then((response) => response.json())
       .then((success) => {
         this.setState({
@@ -36,7 +36,7 @@ class StoreGoods extends Component {
 
  render() {
     return (
-      <View>
+      <View style={styles.body_bg}>
          <View style={styles.body_head}>
           <HeaderView
               titleView= '收藏商品'

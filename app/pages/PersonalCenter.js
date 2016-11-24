@@ -11,6 +11,8 @@ import PersonalSet from './PersonalSet';
 import ScanHistory from './ScanHistory';
 import PersonInfo from './PersonInfo';
 import StoreGoods from './StoreGoods';
+import AOGMess from './AOGMess';
+import MyBalance from './MyBalance';
 
 class PersonCenter extends Component {
     //设置按钮
