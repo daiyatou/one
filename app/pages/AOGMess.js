@@ -25,7 +25,7 @@ class AOGMess extends Component {
     this.getDate();
   }
   getDate() {              // 获取数据的方法，并在取得数据之后更新数据源
-    fetch(AOGMesstUrl)
+    fetch(AOGMessUrl)
       .then((response) => response.json())
       .then((success) => {
         this.setState({

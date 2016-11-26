@@ -15,6 +15,7 @@ import AOGMess from './AOGMess';
 import MyBalance from './MyBalance';
 import MySecurity from './MySecurity';
 import MyPoint from './MyPoint';
+import MyOrder from './MyOrder';
 
 class PersonCenter extends Component {
     //设置按钮
